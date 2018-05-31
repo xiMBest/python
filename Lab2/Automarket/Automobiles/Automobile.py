@@ -7,3 +7,5 @@ class Automobile:
         self.weight = weight
         self.engine = engine
 
+    # def __str__(self):
+    #     return "here I am"

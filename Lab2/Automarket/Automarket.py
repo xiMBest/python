@@ -7,6 +7,7 @@ class Automarket:
     def sort_by_engine(self):
         self.automobiles.sort(key=lambda automobile: automobile.engine)
 
+
     def find_by_engine(self, engine):
         found_automobile = []
 
