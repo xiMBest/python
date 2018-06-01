@@ -12,6 +12,7 @@ class Automobile(db.Model):
     name = db.Column(db.String(45))
     engine = db.Column(db.Integer)
     year = db.Column(db.Integer)
+    manf = db.Column(db.String(45))
 
 
 @app.route('/automobiles', methods=['GET'])
@@ -22,7 +23,8 @@ def get_all_automobiles():
         automobile = {
             'name': at.name,
             'engine': at.engine,
-            'year': at.year
+            'year': at.year,
+            'manf': at.manf
         }
         automobiles.append(automobile)
     db.session.commit()
@@ -35,7 +37,8 @@ def get_automobile(automobile_id):
     automobile = {
         'name': at.name,
         'engine': at.engine,
-        'year': at.year
+        'year': at.year,
+        'manf': at.manf
     }
     db.session.commit()
     return jsonify({'automobile': automobile})
@@ -56,6 +59,7 @@ def add_automobile():
     new_automobile.name = request.json['name']
     new_automobile.engine = request.json.get('engine', 0)
     new_automobile.year = request.json.get('year', 0)
+    new_automobile.manf = request.json['manf']
 
     db.session.add(new_automobile)
     db.session.commit()
